@@ -2,11 +2,15 @@
 var tables=[];
 var employees=[];
 
+$(document).ready( function () {
+  console.log('in doc ready');
+});
+
 var createEmployee = function(){
   console.log( 'in createEmployee' );
   // get user input
-  var employeeFirstName = document.getElementById( 'employeeFirstNameIn' ).value;
-  var employeeLastName = document.getElementById( 'employeeLastNameIn' ).value;
+  var employeeFirstName = $( 'employeeFirstNameIn' ).val();
+  var employeeLastName = $( 'employeeLastNameIn' ).val();
   // create object for employee
   var newEmployee= {
     firstName : employeeFirstName,
