@@ -7,6 +7,7 @@ CREATE TABLE server (
 
 CREATE TABLE booth (
 	id SERIAL PRIMARY KEY,
+	name VARCHAR(12),
 	capacity INT,
 	server_id INT REFERENCES server(id),
 	status INT REFERENCES status(id)
@@ -16,6 +17,7 @@ CREATE TABLE status (
 	id SERIAL PRIMARY KEY,
 	status VARCHAR(12)
 );
+
 INSERT INTO "public"."server"("first_name", "last_name", "status") VALUES('Cody', 'Ogden', TRUE) RETURNING "id", "first_name", "last_name", "status";
 INSERT INTO "public"."server"("first_name", "last_name", "status") VALUES('Matt', 'S', TRUE) RETURNING "id", "first_name", "last_name", "status";
 INSERT INTO "public"."server"("first_name", "last_name", "status") VALUES('Ben', 'J', TRUE) RETURNING "id", "first_name", "last_name", "status";

@@ -32,3 +32,22 @@ app.get( '/', function( req, res ) {
 
 });
 app.use( express.static( 'node_modules/jquery/dist/') );
+
+app.post('/employee', function(req,res){
+	console.log('/employee hit', req.body);
+	var first_name = req.body.first_name;
+	var last_name = req.body.last_name;
+
+	pg.connect(connectionString, function(err, client, done){
+		if(err){
+			console.log(err);
+		} else {
+			console.log('connected to db');
+			console.log(first_name);
+			client.query('INSERT INTO server(first_name, last_name) VALUES($1, $2)', [first_name, last_name]);
+			res.send({success: true});
+		}
+	});
+
+
+});
