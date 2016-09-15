@@ -1,0 +1,18 @@
+CREATE TABLE server (
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR(12),
+	last_name VARCHAR(12),
+	status	BOOLEAN
+);
+
+CREATE TABLE booth (
+	id SERIAL PRIMARY KEY,
+	capacity INT,
+	server_id INT REFERENCES server(id),
+	status INT REFERENCES status(id)
+);
+
+CREATE TABLE status (
+	id SERIAL PRIMARY KEY,
+	status VARCHAR(12)
+);
